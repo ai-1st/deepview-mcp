@@ -1,0 +1,53 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - geminiApiKey
+    properties:
+      geminiApiKey:
+        type: string
+        description: Gemini API Key from Google AI Studio
+      codebaseFile:
+        type: string
+        default: ""
+        description: Optional path to the codebase file. If empty, the server will start
+          without loading a codebase. Otherwise, the file must exist.
+      model:
+        type: string
+        default: gemini-2.0-flash-lite
+        description: Gemini model to use. For example, gemini-2.0-flash-lite or
+          gemini-2.5-pro-exp-03-25.
+      logLevel:
+        type: string
+        default: INFO
+        description: Logging level for the server.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => { 
+      const args = [];
+      // Only add codebaseFile arg if provided
+      if(config.codebaseFile && config.codebaseFile.trim() !== '') {
+        args.push(config.codebaseFile);
+      }
+      if(config.model && config.model.trim() !== '') {
+        args.push('--model', config.model);
+      }
+      if(config.logLevel && config.logLevel.trim() !== '') {
+        args.push('--log-level', config.logLevel);
+      }
+      return {
+        command: 'deepview-mcp',
+        args: args,
+        env: { GEMINI_API_KEY: config.geminiApiKey }
+      };
+    }
+  exampleConfig:
+    geminiApiKey: EXAMPLE_GEMINI_API_KEY
+    codebaseFile: ""
+    model: gemini-2.5-pro-exp-03-25
+    logLevel: INFO

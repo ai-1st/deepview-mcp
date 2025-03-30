@@ -3,6 +3,7 @@
 DeepView MCP is a Model Context Protocol server that enables IDEs like Cursor and Windsurf to analyze large codebases using Gemini's extensive context window.
 
 [![PyPI version](https://badge.fury.io/py/deepview-mcp.svg)](https://badge.fury.io/py/deepview-mcp)
+[![smithery badge](https://smithery.ai/badge/@ai-1st/deepview-mcp)](https://smithery.ai/server/@ai-1st/deepview-mcp)
 
 ## Features
 
@@ -17,6 +18,14 @@ DeepView MCP is a Model Context Protocol server that enables IDEs like Cursor an
 - Gemini API key from [Google AI Studio](https://aistudio.google.com/)
 
 ## Installation
+
+### Installing via Smithery
+
+To install DeepView for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ai-1st/deepview-mcp):
+
+```bash
+npx -y @smithery/cli install @ai-1st/deepview-mcp --client claude
+```
 
 ### Using pip
 
