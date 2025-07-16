@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ai-1st-deepview-mcp-badge.png)](https://mseep.ai/app/ai-1st-deepview-mcp)
+
 # DeepView MCP
 
 DeepView MCP is a Model Context Protocol server that enables IDEs like Cursor and Windsurf to analyze large codebases using Gemini's extensive context window.
